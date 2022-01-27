@@ -133,7 +133,7 @@ public:
   Expect<std::vector<std::pair<ValVariant, ValType>>>
   execute(std::string_view Func, Span<const ValVariant> Params = {},
           Span<const ValType> ParamTypes = {}) {
-    std::unique_lock Lock(Mutex);
+    std::shared_lock Lock(Mutex);
     return unsafeExecute(Func, Params, ParamTypes);
   }
 
@@ -142,7 +142,7 @@ public:
   execute(std::string_view ModName, std::string_view Func,
           Span<const ValVariant> Params = {},
           Span<const ValType> ParamTypes = {}) {
-    std::unique_lock Lock(Mutex);
+    std::shared_lock Lock(Mutex);
     return unsafeExecute(ModName, Func, Params, ParamTypes);
   }
 
