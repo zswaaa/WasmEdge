@@ -70,6 +70,8 @@ set(CPACK_PROJECT_CONFIG_FILE ${CMAKE_CURRENT_SOURCE_DIR}/cmake/cpack_config.cma
 if(WASMEDGE_BUILD_COVERAGE)
   include(CodeCoverage)
   append_coverage_compiler_flags()
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O2" PARENT_SCOPE)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O2" PARENT_SCOPE)
 endif()
 
 include(GNUInstallDirs)
